@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Calories{% endblock %}
+
+{% block content %}
+<h1>🍎 Calories</h1>
+<div class="card">
+    <form action="{{ url_for('add') }}" method="POST">
+        <input type="text" name="food" placeholder="What did you eat? (e.g. 2 eggs and toast)" required>
+        <button type="submit">Add Food</button>
+    </form>
+</div>
+<div class="card">
+    <h2>Today's Food</h2>
+    {% for entry in entries %}
+        <p>{{ entry.food }} — {{ entry.date.strftime('%H:%M') }}</p>
+    {% else %}
+        <p>No entries yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

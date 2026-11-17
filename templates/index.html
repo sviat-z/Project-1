@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome, Sviatoslav 👋</h1>
+<div class="features">
+    <a href="{{ url_for('calories') }}" class="feature-card">
+        <span class="icon">🍎</span>
+        <h3>Calories</h3>
+        <p>Track what you eat</p>
+    </a>
+    <div class="feature-card disabled">
+        <span class="icon">👟</span>
+        <h3>Steps</h3>
+        <p>Coming soon</p>
+    </div>
+    <div class="feature-card disabled">
+        <span class="icon">⚖️</span>
+        <h3>Profile</h3>
+        <p>Coming soon</p>
+    </div>
+</div>
+{% endblock %}
