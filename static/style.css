@@ -98,3 +98,27 @@ button:hover {
 .feature-card .icon { font-size: 2rem; }
 .feature-card.disabled { opacity: 0.5; pointer-events: none; }
 .card h2 { margin-bottom: 12px; }
+
+/* Daily totals */
+.totals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    text-align: center;
+}
+.totals strong { display: block; font-size: 1.4rem; color: #4CAF50; }
+.totals span { font-size: 0.85rem; color: #777; }
+
+/* Food entries */
+.entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.entry:last-child { border-bottom: none; }
+.entry-food { font-weight: 500; }
+.entry-time { font-size: 0.85rem; color: #999; }
+.entry-macros { text-align: right; font-size: 0.85rem; color: #555; }
+.entry-macros strong { display: block; font-size: 1rem; color: #333; }

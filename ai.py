@@ -15,7 +15,7 @@ def estimate_nutrition(food_text):
     """Повертає словник з калоріями і макросами, або None при помилці."""
     try:
         response = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-3.5-flash-lite",
             contents=PROMPT.format(food=food_text),
             config={"response_mime_type": "application/json"},
         )
