@@ -3,16 +3,41 @@
 
 {% block content %}
 <h1>🍎 Calories</h1>
+
 <div class="card">
     <form action="{{ url_for('add') }}" method="POST">
         <input type="text" name="food" placeholder="What did you eat? (e.g. 2 eggs and toast)" required>
         <button type="submit">Add Food</button>
     </form>
 </div>
+
+<div class="card">
+    <h2>Today</h2>
+    <div class="totals">
+        <div><strong>{{ totals.calories }}</strong><span>kcal</span></div>
+        <div><strong>{{ totals.protein|round(1) }}g</strong><span>protein</span></div>
+        <div><strong>{{ totals.carbs|round(1) }}g</strong><span>carbs</span></div>
+        <div><strong>{{ totals.fat|round(1) }}g</strong><span>fat</span></div>
+    </div>
+</div>
+
 <div class="card">
     <h2>Today's Food</h2>
     {% for entry in entries %}
-        <p>{{ entry.food }} — {{ entry.date.strftime('%H:%M') }}</p>
+        <div class="entry">
+            <div>
+                <p class="entry-food">{{ entry.food }}</p>
+                <p class="entry-time">{{ entry.date.strftime('%H:%M') }}</p>
+            </div>
+            <div class="entry-macros">
+                {% if entry.calories is not none %}
+                    <strong>{{ entry.calories }} kcal</strong>
+                    <span>P {{ entry.protein }} · C {{ entry.carbs }} · F {{ entry.fat }}</span>
+                {% else %}
+                    <span>AI unavailable</span>
+                {% endif %}
+            </div>
+        </div>
     {% else %}
         <p>No entries yet.</p>
     {% endfor %}
